@@ -7,14 +7,24 @@
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
 
-	<bean id="myCoach"
+	<bean id="trackCoach"
 		class="com.duberlyguarnizo.springdemo.TrackCoach">
+		<constructor-arg ref="myFortuneService" />
+	</bean>
+	<bean id="baseballCoach"
+		class="com.duberlyguarnizo.springdemo.BaseballCoach">
+		<constructor-arg ref="myFortuneService" />
 	</bean>
 	<bean id="soccerCoach"
 		class="com.duberlyguarnizo.springdemo.SoccerCoach">
 		<constructor-arg ref="myFortuneService" />
 	</bean>
+	<bean id="cricketCoach" class="com.duberlyguarnizo.springdemo.CricketCoach">
+	<!-- This will call setFortune method (will always put first letter in caps and add a "set" at the beginning) -->
+	<property name="fortune" ref="myFortuneService"></property>
+	</bean>
 	<bean id="myFortuneService"
 		class="com.duberlyguarnizo.springdemo.HappyFortune"></bean>
 </beans>
 
+ 

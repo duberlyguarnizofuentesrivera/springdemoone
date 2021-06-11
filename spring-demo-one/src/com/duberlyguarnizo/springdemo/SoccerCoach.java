@@ -10,14 +10,12 @@ public class SoccerCoach implements Coach {
 
 	@Override
 	public String getDailyWorkout() {
-		// TODO Auto-generated method stub
-		return "Go get drunk and date models!";
+		return "Juega fulbol y maneja ebrio!";
 	}
 
 	@Override
-	public FortuneService getFortune() {
-		// TODO Auto-generated method stub
-		return fortune;
+	public String getDailyFortune() {
+		return fortune.happyFortuneYo();
 	}
 
 }

@@ -1,16 +1,20 @@
 package com.duberlyguarnizo.springdemo;
 
 public class BaseballCoach implements Coach {
+	private FortuneService fortune;
 
-	@Override
-	public String getDailyWorkout() {
-		final String result = "Do some 20 minutes in  batting practice";
-		return result;
+	public BaseballCoach(FortuneService fortune) {
+		super();
+		this.fortune = fortune;
 	}
 
 	@Override
-	public FortuneService getFortune() {
-		// TODO Auto-generated method stub
-		return null;
+	public String getDailyWorkout() {
+		return "Batea tu pelotita y luego corre alrededor de un cuadrado!";
+	}
+
+	@Override
+	public String getDailyFortune() {
+		return fortune.happyFortuneYo();
 	}
 }

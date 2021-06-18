@@ -17,5 +17,14 @@ public class TrackCoach implements Coach {
 	public String getDailyFortune() {
 		return fortune.happyFortuneYo();
 	}
+	
+	//------------Startup and destroy methods----------------
+	public void startUpCoach() {
+		System.out.println("Starting coach... this is an init method!");
+	}
+	//destroy method called only in "singleton" scope
+	public void cleanUpCoach() {
+		System.out.println("Destroying coach!!!");
+	}
 
 }

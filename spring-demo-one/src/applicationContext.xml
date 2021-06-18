@@ -6,7 +6,8 @@
     http://www.springframework.org/schema/beans/spring-beans.xsd
     http://www.springframework.org/schema/context
     http://www.springframework.org/schema/context/spring-context.xsd">
-
+	<context:property-placeholder
+		location="classpath:sports.properties" />
 	<bean id="trackCoach"
 		class="com.duberlyguarnizo.springdemo.TrackCoach">
 		<constructor-arg ref="myFortuneService" />
@@ -15,16 +16,26 @@
 		class="com.duberlyguarnizo.springdemo.BaseballCoach">
 		<constructor-arg ref="myFortuneService" />
 	</bean>
+
 	<bean id="soccerCoach"
 		class="com.duberlyguarnizo.springdemo.SoccerCoach">
 		<constructor-arg ref="myFortuneService" />
 	</bean>
-	<bean id="cricketCoach" class="com.duberlyguarnizo.springdemo.CricketCoach">
-	<!-- This will call setFortune method (will always put first letter in caps and add a "set" at the beginning) -->
-	<property name="fortune" ref="myFortuneService"></property>
+	<bean id="cricketCoach"
+		class="com.duberlyguarnizo.springdemo.CricketCoach" scope="prototype">
+		<!-- This will call setFortune method (will always put first letter in 
+			caps and add a "set" at the beginning) -->
+		<property name="fortune" ref="myRandomFortuneService"></property>
+		<property name="emailAddress" value="${foo.email}" />
+		<property name="team" value="${foo.team}" />
+		<property name="yearsOld" value="${foo.yearsSinceFounded}" />
+
 	</bean>
+	<!-- Fortune services -->
 	<bean id="myFortuneService"
 		class="com.duberlyguarnizo.springdemo.HappyFortune"></bean>
+	<bean id="myRandomFortuneService"
+		class="com.duberlyguarnizo.springdemo.RandomFortune"></bean>
 </beans>
 
  
